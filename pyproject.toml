@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "agro-news"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "agro_news"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pre-commit = "^3.6.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
