@@ -1,28 +1,31 @@
-import os
+import pandas as pd
+from transformers import BertForSequenceClassification
+from transformers import BertTokenizer
+from transformers import Trainer
+from transformers import TrainingArguments
 
-import nltk
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
+PRE_TRAINED_MODEL_NAME = "neuralmind/bert-base-portuguese-cased"
 
-nltk.download("vader_lexicon")
+model = BertForSequenceClassification.from_pretrained(
+    PRE_TRAINED_MODEL_NAME, num_labels=2
+)
+tokenizer = BertTokenizer.from_pretrained(PRE_TRAINED_MODEL_NAME, do_lower_case=False)
 
 
-analyzer = SentimentIntensityAnalyzer()
-
-text = (
-    "Média diária de exportação de milho em janeiro/24 segue superior a de janeiro/23"
+training_args = TrainingArguments(
+    output_dir="/ml_models",
+    num_train_epochs=3,
+    per_device_train_batch_size=4,
+    evaluation_strategy="epoch",
 )
 
-
-def sentiment_analyzer(text):
-    polarity = analyzer.polarity_scores(text)
-    if polarity["compound"] > 0.25:
-        return "positive", polarity["compound"]
-    elif polarity["compound"] < -0.25:
-        return "negative", polarity["compound"]
-    else:
-        return "neutral", polarity["compound"]
-
-
-print(
-    f"{text}\nSentiment: {sentiment_analyzer(text)[0]} | Score: {sentiment_analyzer(text)[1]}"
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=pd.DataFrame(),  # Substitua pelo conjunto de dados
+    eval_dataset=pd.DataFrame(),  # Substitua pelo conjunto de dados
 )
+
+trainer.train()
+
+trainer.evaluate()
