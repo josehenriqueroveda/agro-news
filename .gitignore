@@ -162,3 +162,5 @@ cython_debug/
 datasets
 poetry.lock
 ml_models
+db
+lab.ipynb
