@@ -34,7 +34,7 @@ load_dotenv(find_dotenv())
 
 # Set up logging
 logging.basicConfig(filename=LOG_FILENAME, level=LOG_LEVEL, format=LOG_FORMAT)
-logger = logging.getLogger()
+logger = logging.getLogger(__name__)
 
 
 def get_soup(url):
