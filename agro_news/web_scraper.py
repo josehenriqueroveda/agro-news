@@ -122,6 +122,7 @@ def main():
         data_list = get_news_data(soup)
         df = create_dataframe(data_list)
         df = filter_by_today(df)
+        print(f"Number of news: {len(df)}")
         save_to_database(df)
     except Exception as e:
         logger.error(f"An error occurred in main. Error: {e}")
