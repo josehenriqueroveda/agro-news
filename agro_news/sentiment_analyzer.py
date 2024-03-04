@@ -1,31 +1,18 @@
 import pandas as pd
-from transformers import BertForSequenceClassification
-from transformers import BertTokenizer
-from transformers import Trainer
-from transformers import TrainingArguments
-
-PRE_TRAINED_MODEL_NAME = "neuralmind/bert-base-portuguese-cased"
-
-model = BertForSequenceClassification.from_pretrained(
-    PRE_TRAINED_MODEL_NAME, num_labels=2
-)
-tokenizer = BertTokenizer.from_pretrained(PRE_TRAINED_MODEL_NAME, do_lower_case=False)
+from pysentimiento import create_analyzer
 
 
-training_args = TrainingArguments(
-    output_dir="/ml_models",
-    num_train_epochs=3,
-    per_device_train_batch_size=4,
-    evaluation_strategy="epoch",
-)
+class SentimentAnalyzer:
+    """
+    SentimentAnalyzer class to analyze the sentiment of a given text
 
-trainer = Trainer(
-    model=model,
-    args=training_args,
-    train_dataset=pd.DataFrame(),  # Substitua pelo conjunto de dados
-    eval_dataset=pd.DataFrame(),  # Substitua pelo conjunto de dados
-)
+    ### Args:
+    task (str): The task to perform. It can be "sentiment", "emotion", "hate_speech", "irony", "ner", "pos".
+    lang (str): The language of the text. It can be "en", "es", "it", "pt".
+    """
 
-trainer.train()
+    def __init__(self, task: str, lang: str):
+        self.analyzer = create_analyzer(task=task, lang=lang)
 
-trainer.evaluate()
+    def analyze(self, text: str) -> pd.DataFrame:
+        return self.analyzer.predict(text)
