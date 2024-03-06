@@ -51,6 +51,36 @@ Once these variables are set, you can run the script with `python web_scraper.py
 
 The script ignores any news items whose text is in the `IGNORE_LIST` list. This list can be customized as needed.
 
+# SentimentAnalyzer
+
+The `SentimentAnalyzer` class is used to analyze the sentiment of a given text.
+
+## Requirements
+
+- pandas
+- pysentimiento
+
+## Installation
+
+Install the required packages with pip:
+
+```bash
+pip install pandas pysentimiento
+```
+## Usage
+First, import the `SentimentAnalyzer` class, then, create an instance of the SentimentAnalyzer class, specifying the task and language. You can then use the analyze method to analyze the sentiment of a text:
+```python
+from sentiment_analyzer import SentimentAnalyzer
+
+analyzer = SentimentAnalyzer(task="emotion", lang="pt")
+
+result = analyzer.analyze("Your text here")
+```
+
+### Parameters
+`task` (str): The task to perform. It can be "sentiment", "emotion", "hate_speech", "irony", "ner", "pos".
+`lang` (str): The language of the text. It can be "en", "es", "it", "pt".
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
