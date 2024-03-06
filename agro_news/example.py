@@ -10,13 +10,13 @@ news = [
 
 sa = SentimentAnalyzer(task="sentiment", lang="pt")
 
-print('##### Sentiment Analysis #####')
+print("##### Sentiment Analysis #####")
 for item in news:
     print(item)
     print(sa.analyze(item))
-    print('---------------------------------')
+    print("---------------------------------")
 
-  
+
 # Output:
 # ##### Sentiment Analysis #####
 # Guerra comercial entre EUA e China pode piorar o mercado de soja
