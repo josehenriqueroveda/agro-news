@@ -1,5 +1,7 @@
 # Agro News Web Scraper
 
+[![Lint](https://github.com/josehenriqueroveda/agro-news/actions/workflows/black.yml/badge.svg)](https://github.com/josehenriqueroveda/agro-news/actions/workflows/black.yml)
+
 The Agro News Web Scraper is a Python-based tool designed to automate the process of gathering news related to agriculture from a specified URL. The tool is designed to be efficient, reliable, and easy to use, making it an invaluable resource for anyone interested in staying up-to-date with the latest developments in the agricultural sector.
 
 ## Project Purpose
