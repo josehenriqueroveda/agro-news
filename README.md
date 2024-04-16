@@ -51,35 +51,75 @@ Once these variables are set, you can run the script with `python web_scraper.py
 
 The script ignores any news items whose text is in the `IGNORE_LIST` list. This list can be customized as needed.
 
-# SentimentAnalyzer
+# Sentiment Analysis
 
-The `SentimentAnalyzer` class is used to analyze the sentiment of a given text.
+The sentiment analysis module in `example.py` file is made by `Gemini API`, from Google. It is provided a prompt with the instructions and the news headline to be analyzed. The output is the sentiment of the news headline, which can be positive, negative, or neutral, and its scores from -1 to 1.
 
-## Requirements
-
-- pandas
-- pysentimiento
-
-## Installation
-
-Install the required packages with pip:
-
-```bash
-pip install pandas pysentimiento
+## Output example
+```json
+[
+  {
+    "classification": "POSITIVE",
+    "score": 0.671,
+    "headline": "Milho se apoia no dólar e sobe até 1,8% na B3 nesta segunda-feira"
+  },
+  {
+    "classification": "NEGATIVE",
+    "score": -0.412,
+    "headline": "Exportação de milho avança menos de 500 toneladas na semana e representa apenas 6% de abril/23"
+  },
+  {
+    "classification": "POSITIVE",
+    "score": 0.654,
+    "headline": "USDA informa venda de milho para o México nesta 2ª feira (15)"
+  },
+  {
+    "classification": "POSITIVE",
+    "score": 0.891,
+    "headline": "Segunda-feira começa com milho subindo na Bolsa Brasileira"
+  },
+  {
+    "classification": "NEGATIVE",
+    "score": 0.8,
+    "headline": "Milho/Cepea: Com novas quedas, Indicador volta a fechar abaixo dos R$ 60/sc"
+  },
+  {
+    "classification": "POSITIVE",
+    "score": 0.56,
+    "headline": "Dólar ajuda milho fechar 6ªfeira em alta na B3, mas não evita desvalorização semanal"
+  },
+  {
+    "classification": "POSITIVE",
+    "score": 0.891,
+    "headline": "Safras & Mercado eleva estimativas para produção de soja e milho do Brasil"
+  },
+  {
+    "classification": "POSITIVE",
+    "score": 0.767,
+    "headline": "Preços futuros do milho abrem a sexta-feira em alta na B3 e em Chicago"
+  },
+  {
+    "classification": "POSITIVE",
+    "score": 0.78,
+    "headline": "Milho: Cotação futura finaliza a sessão desta 4ª feira com ganhos na CBOT"
+  },
+  {
+    "classification": "NEUTRAL",
+    "score": 0,
+    "headline": "Novo leilão de frete de milho ocorrerá na quinta-feira (11)"
+  },
+  {
+    "classification": "POSITIVE",
+    "score": 0.678,
+    "headline": "Ucrânia enviará 600 mil t de milho à China em abril e 400 mil t em maio, dizem corretores"
+  },
+  {
+    "classification": "NEUTRAL",
+    "score": 0.0,
+    "headline": "Preços futuros do milho trabalham com leves altas nesta 4ª feira em Chicago"
+  }
+]
 ```
-## Usage
-First, import the `SentimentAnalyzer` class, then, create an instance of the SentimentAnalyzer class, specifying the task and language. You can then use the analyze method to analyze the sentiment of a text:
-```python
-from sentiment_analyzer import SentimentAnalyzer
-
-analyzer = SentimentAnalyzer(task="emotion", lang="pt")
-
-result = analyzer.analyze("Your text here")
-```
-
-### Parameters
-`task` (str): The task to perform. It can be "sentiment", "emotion", "hate_speech", "irony", "ner", "pos".
-`lang` (str): The language of the text. It can be "en", "es", "it", "pt".
 
 ## License
 
